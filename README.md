@@ -7,9 +7,9 @@
 
 #### The goal of this data engineering project is to analyse following
 
-1. International top Team: Popular men/women international teams.
+1. Team Ranking: List of international teams ranking based on match type.
 2. Top Wicket: Top wicket takers.
-3. Season Max Matches: Max matches per country per season
+3. Season Max Matches: Max matches per country per year
 4. Bowling Economy Rate: Runs conceded per over bowled, measuring a bowler’s efficiency in restricting runs. 
 5. Batting Average: Total runs scored divided by times dismissed, indicating a batsman’s consistency.
 6. Strike Rate: Runs scored per 100 balls faced, reflecting an aggressive or cautious approach.

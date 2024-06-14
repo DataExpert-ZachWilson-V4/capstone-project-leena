@@ -1,0 +1,19 @@
+Steps:
+
+
+1. Downloading dataa
+    Historical
+        Figure out how to download / read data
+        How to validate input file - schema validator, bad character in string
+        one file is one json so expands based on bowler data
+
+    New data
+        Write python script that downloads new data
+
+
+June 10
+
+1. create fact tables with all info under innings with additional match_id from json file
+2 create dim table of match_info which will have into under info in json file with additional match_id from json file(same as fact tale in order to join and get info for faster sqls)
+
+Tables - over_deliveries_fact and dim_match_info
