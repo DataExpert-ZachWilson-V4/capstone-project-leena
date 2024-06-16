@@ -40,7 +40,7 @@ match = match_num_df1.withColumn("input_file_name", f.regexp_extract(f.col('inpu
     .withColumn("match_season", col("info.season")) \
     .withColumn("match_team_type", col("info.team_type")) \
     .withColumn("team_1", col("info.teams").getItem(0)) \
-    .withColumn("team_1", col("info.teams").getItem(1)) \
+    .withColumn("team_2", col("info.teams").getItem(1)) \
     .withColumn("player_of_match", explode("info.player_of_match")) \
     .withColumn("toss_decision", col("info.toss.decision")) \
     .withColumn("toss_winner", col("info.toss.winner")) \
