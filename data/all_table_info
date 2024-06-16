@@ -27,7 +27,6 @@ team_id
 team_name
 
 
-
 dim_player
 ------------------
 player_id
@@ -41,3 +40,9 @@ dim_event
 event_name
 event_type
 event_start_date
+
+dim_date
+------------------
+
+date_id
+calendar_year
