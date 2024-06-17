@@ -1,0 +1,80 @@
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, ArrayType, MapType, LongType
+
+# Define the schema
+schema = StructType([
+    StructField("meta", StructType([
+        StructField("data_version", StringType(), True),
+        StructField("created", StringType(), True),
+        StructField("revision", IntegerType(), True)
+    ]), True),
+    StructField("info", StructType([
+        StructField("balls_per_over", IntegerType(), True),
+        StructField("city", StringType(), True),
+        StructField("dates", ArrayType(StringType()), True),
+        StructField("event", StructType([
+            StructField("name", StringType(), True),
+            StructField("match_number", IntegerType(), True)
+        ]), True),
+        StructField("gender", StringType(), True),
+        StructField("match_type", StringType(), True),
+        StructField("match_type_number", IntegerType(), True),
+        StructField("officials", StructType([
+            StructField("match_referees", ArrayType(StringType()), True),
+            StructField("reserve_umpires", ArrayType(StringType()), True),
+            StructField("tv_umpires", ArrayType(StringType()), True),
+            StructField("umpires", ArrayType(StringType()), True)
+        ]), True),
+        StructField("outcome", StructType([
+            StructField("winner", StringType(), True),
+            StructField("by", StructType([
+                StructField("runs", IntegerType(), True)
+            ]), True)
+        ]), True),
+        StructField("overs", IntegerType(), True),
+        StructField("player_of_match", ArrayType(StringType()), True),
+        StructField("players", StructType([
+            StructField("England", ArrayType(StringType()), True),
+            StructField("Pakistan", ArrayType(StringType()), True)
+        ]), True),
+        StructField("registry", StructType([
+            StructField("people", MapType(StringType(), StringType()), True)
+        ]), True),
+        StructField("season", StringType(), True),
+        StructField("team_type", StringType(), True),
+        StructField("teams", ArrayType(StringType()), True),
+        StructField("toss", StructType([
+            StructField("decision", StringType(), True),
+            StructField("winner", StringType(), True)
+        ]), True),
+        StructField("venue", StringType(), True)
+    ]), True),
+    StructField("innings", ArrayType(StructType([
+        StructField("team", StringType(), True),
+        StructField("overs", ArrayType(StructType([
+            StructField("over", IntegerType(), True),
+            StructField("deliveries", ArrayType(StructType([
+                StructField("batter", StringType(), True),
+                StructField("bowler", StringType(), True),
+                StructField("non_striker", StringType(), True),
+                StructField("runs", StructType([
+                    StructField("batter", IntegerType(), True),
+                    StructField("extras", IntegerType(), True),
+                    StructField("total", IntegerType(), True)
+                ]), True),
+                StructField("wickets", ArrayType(StructType([
+                    StructField("player_out", StringType(), True),
+                    StructField("fielders", ArrayType(StructType([
+                        StructField("name", StringType(), True)
+                    ])), True),
+                    StructField("kind", StringType(), True)
+                ])), True)
+            ])), True)
+        ])), True)
+    ])), True)
+])
+
+# Read the JSON file with the schema
+df = spark.read.schema(schema).json("/mnt/data/1385688.json")
+
+# Show the DataFrame
+df.show(truncate=False)
