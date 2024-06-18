@@ -28,9 +28,12 @@ def get_schema():
             StructField("umpires", ArrayType(StringType()))
         ])),
         StructField("outcome", StructType([
-            StructField("winner", StringType()),
+            StructField("winner", StringType(), True),
+            StructField("result", StringType(), True),
             StructField("by", StructType([
-                StructField("runs", IntegerType())
+                StructField("runs", IntegerType(), True),
+                StructField("wickets", IntegerType(), True)
+
             ]))
         ])),
         StructField("overs", IntegerType()),
