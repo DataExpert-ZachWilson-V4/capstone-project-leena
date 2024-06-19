@@ -33,7 +33,6 @@ def get_schema():
             StructField("by", StructType([
                 StructField("runs", IntegerType(), True),
                 StructField("wickets", IntegerType(), True)
-
             ]))
         ])),
         StructField("overs", IntegerType()),

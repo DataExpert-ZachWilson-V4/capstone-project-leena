@@ -1,0 +1,26 @@
+jsonStrings_name =
+{
+  "first_name": "Leena",
+  "middle_name": "S",
+  "last_name": "Patil",
+  "address": {
+    "city": "Fremont",
+    "state": "Ohio"
+  }
+}
+
+jsonString_full_name =
+{
+  "first_name": "Jiya",
+  "last_name": "Patil",
+  "address": {
+    "city": "Fremont",
+    "state": "Ohio"
+  }
+}
+
+schema1 = StructType([
+StructField("first_name", StringType()),
+StructField("last_name", StringType()),
+  StructField("address", MapType(StringType(),StringType(), True))
+])

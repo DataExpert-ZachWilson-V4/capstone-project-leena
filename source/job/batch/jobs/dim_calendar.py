@@ -17,4 +17,3 @@ df.createOrReplaceTempView("my_temp_table")
 
 # Query the temporary table
 result = spark.sql("SELECT * FROM my_temp_table limit 60")
-#result.show(truncate=False)

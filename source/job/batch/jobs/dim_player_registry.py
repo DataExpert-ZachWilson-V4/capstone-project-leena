@@ -11,7 +11,7 @@ spark = SparkSession.builder.appName("dim_player_registry").getOrCreate()
 spark.sql.caseSensitive: True
 schema = schema.get_schema()
 matches_df = spark.read.option("multiline", "true").schema(schema).json(
-    "/Users/spatil/workspace/HelloPySpark/data/matches/*.json")
+    "/Users/leenapatil/Documents/all_json/*.json")
 matches_df = matches_df.withColumn("file_name", input_file_name())
 people_df = matches_df.select("file_name", "info.*").withColumn("player_info",
                                                                 explode(map_entries(col("registry.people")))) \
@@ -23,4 +23,4 @@ match_palyer_registry = people_df.select("file_name", "player_name", "player_id"
                                                                                                  '[0-9]+', 0)).select(
     "match_num", "player_id", "player_name")
 
-match_palyer_registry.select("match_num", "player_id", "player_name").write.parquet("/Users/spatil/workspace/HelloPySpark/data/dimension/dim_match_player")
+match_palyer_registry.repartition(4).select("match_num", "player_id", "player_name").write.parquet("/Users/leenapatil/IdeaProjects/capstone-project-leena/data/dim_match_player")
